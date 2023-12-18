@@ -3,6 +3,8 @@
 import com.vanniktech.maven.publish.SonatypeHost.S01
 import org.jetbrains.dokka.gradle.DokkaTask
 
+group = "com.github.Manriif"
+
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
