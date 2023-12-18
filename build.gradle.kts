@@ -1,8 +1,3 @@
-plugins {
-    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
-    id("com.diffplug.spotless") version "6.4.1"
-}
-
 buildscript {
     repositories {
         mavenCentral()
@@ -21,6 +16,16 @@ buildscript {
         classpath(libs.kover.plugin)
         classpath(libs.atomic.fu.gradle.plugin)
     }
+}
+
+plugins {
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
+    id("com.diffplug.spotless") version "6.4.1"
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlinx.atomicfu) apply false
+    alias(libs.plugins.kotlinx.serialization) apply false
 }
 
 allprojects {

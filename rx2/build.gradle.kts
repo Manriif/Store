@@ -28,11 +28,11 @@ dependencies {
 }
 
 android {
-    compileSdk = 33
+    namespace = "org.mobilenativefoundation.store.rx2"
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 33
+        minSdk = libs.versions.androidMinSdk.get().toInt()
     }
 
     lint {

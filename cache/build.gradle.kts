@@ -16,7 +16,8 @@ plugins {
 }
 
 kotlin {
-    android()
+    applyDefaultHierarchyTemplate()
+    androidTarget()
     jvm()
     iosArm64()
     iosX64()
@@ -48,19 +49,15 @@ kotlin {
         }
         val jvmMain by getting
         val androidMain by getting
-        val nativeMain by creating {
-            dependsOn(commonMain)
-        }
     }
 }
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    compileSdk = 33
+    namespace = "org.mobilenativefoundation.store.cache5"
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 33
+        minSdk = libs.versions.androidMinSdk.get().toInt()
     }
 
     lint {

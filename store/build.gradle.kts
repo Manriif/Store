@@ -21,6 +21,8 @@ rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJ
 }
 
 kotlin {
+    //applyDefaultHierarchyTemplate()
+    //androidTarget()
     android()
     jvm()
     iosArm64()
@@ -60,7 +62,6 @@ kotlin {
         }
 
         val commonTest by getting {
-            dependsOn(commonMain)
             dependencies {
                 implementation(kotlin("test"))
                 implementation(libs.junit)
@@ -77,12 +78,11 @@ kotlin {
 }
 
 android {
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    compileSdk = 33
+    namespace = "org.mobilenativefoundation.store.store5"
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 24
-        targetSdk = 33
+        minSdk = libs.versions.androidMinSdk.get().toInt()
     }
 
     lint {
